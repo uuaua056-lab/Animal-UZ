@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Animal UZ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <nav class="nav">
+    <div class="logo">Animal UZ </div>
+    <div class="nav-right">
+      <a href="stats.html">Hayvonlarni sotib olish</a>
+      <button id="btnLogout" class="btn hidden" onclick="logout()">Chiqish</button>
+      <button id="btnShowAuth" class="btn" onclick="showAuth()">Kirish / Roʻyxatdan oʻtish</button>
+    </div>
+  </nav>
+
+  
+  <div id="authModal" class="modal hidden">
+    <div class="card auth-card">
+      <h2 id="authTitle">Kirish</h2>
+
+      <div id="loginForm">
+        <input id="loginUser" placeholder="Foydalanuvchi nomi" />
+        <input id="loginPass" type="password" placeholder="Parol" />
+        <button class="btn" onclick="login()">Kirish</button>
+        <p>Hisobingiz yoʻqmi? <span class="link" onclick="toggleAuth()">Roʻyxatdan oʻtish</span></p>
+      </div>
+
+      <div id="regForm" class="hidden">
+        <input id="regUser" placeholder="Foydalanuvchi nomi" />
+        <input id="regPass" type="password" placeholder="Parol" />
+        <button class="btn" onclick="register()">Roʻyxatdan oʻtish</button>
+        <p>Hisobingiz bor? <span class="link" onclick="toggleAuth()">Kirish</span></p>
+      </div>
+
+      <button class="btn ghost" onclick="hideAuth()">Bekor</button>
+    </div>
+  </div>
+
+
+  <main class="container">
+
+  
+    <section class="panel">
+      <h2>Hayvon joylash (e'lon qo'shish)</h2>
+      <div class="form-grid">
+        <input id="petTitle" placeholder="Ismi (masalan: Mushi)" />
+        <select id="petType">
+          <option value="It">It</option>
+          <option value="Mushuk">Mushuk</option>
+          <option value="Quyon">Quyon</option>
+          <option value="Qush">Qush</option>
+          <option value="Boshqa">Boshqa</option>
+        </select>
+        <input id="petAge" placeholder="Yoshi (yil)" type="number" min="0" />
+        <input id="petPrice" placeholder="Narxi (bo'sh qoldirsang bepul deb qabul qilinadi)" />
+        <input id="petLocation" placeholder="Hudud / Manzil (masalan: Mirzo-Ulug'bek)" />
+        <input id="petImage" placeholder="Rasm URL (ixtiyoriy)" />
+        <textarea id="petDesc" placeholder="Qisqacha tavsif"></textarea>
+      </div>
+      <div class="row">
+        <button class="btn" onclick="addListing()">E'lon qo'shish</button>
+        <div class="small">E'lonlar barcha foydalanuvchilar uchun ko'rinadi</div>
+      </div>
+    </section>
+
+
+    <section class="panel">
+      <h2>Filtrlash va Qidiruv</h2>
+      <div class="filters">
+        <select id="filterType" onchange="renderListings()">
+          <option value="">Barchasi</option>
+          <option>It</option><option>Mushuk</option><option>Quyon</option><option>Qush</option><option>Boshqa</option>
+        </select>
+        <select id="filterPrice" onchange="renderListings()">
+          <option value="">Barchasi</option>
+          <option value="free">Bepul</option>
+          <option value="paid">Pullik</option>
+        </select>
+        <input id="searchInput" placeholder="Kalit so'z: nom, hudud..." oninput="renderListings()" />
+      </div>
+    </section>
+
+
+    <section class="panel">
+      <h2>E'lonlar</h2>
+      <div id="listings" class="cards-grid"></div>
+    </section>
+
+   
+    <section class="panel">
+      <h2>Yaqin veterinary klinikalar (Xarita)</h2>
+      <div class="map-wrap">
+        
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.2348699603513!2d49.8743571!3d40.4036474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d0025dee7f9%3A0x30d08170659fd86a!2sCaspian%20Veterinar%20Klinikas%C4%B1%20Nerimanov%20Filial%C4%B1!5e0!3m2!1sru!2s!4v1765086595143!5m2!1sru!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="small">Agar rasmiy map kerak bo'lsa Google Maps yoki OpenStreetMap bilan integratsiya qiling.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>© Animal UZ 2025</div>
+    <div class="foot-links">
+      <a href="stats.html">Hayvonlarni sotib olish</a>
+      <a class="link" onclick="showAuth()">Kirish</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
